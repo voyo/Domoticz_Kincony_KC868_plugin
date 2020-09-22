@@ -1,0 +1,1 @@
+# Domoticz_Kincony_KC868_plugin
