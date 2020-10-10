@@ -17,6 +17,7 @@ externallink="https://www.kincony.com/product/relay-controller">
         </ul>
         <h3>Device selection</h3>
         <ul style="list-style-type:square">
+            <li>HC868-H32 - 32 outputs, 6 inputs</li>        
             <li>HC868-H16 - 16 outputs, 8 inputs</li>
             <li>HC868-H4  -  4 outputs, 4 inputs</li>
         </ul>
@@ -61,6 +62,7 @@ externallink="https://www.kincony.com/product/relay-controller">
         <param field="Port" label="Port" width="80px" required="true" default="4196" />
         <param field="Mode1" label="Mode1" width="250px" required="true">
             <options>
+                <option label="HC868-H32 (32 relays/6 inputs)" value="32 6" />
                 <option label="HC868-H16 (16 relays/8 inputs)" value="16 8" />
                 <option label="HC868-H4 (4 relays/4 inputs)" value="4 4" />
             </options>
@@ -243,7 +245,7 @@ class BasePlugin:
         if Unit >= 65:
             valeurs_sorties = list()
             commande = Devices[Unit].Description
-            Domoticz.Log ("onCommand - Direct order:" + command)
+            Domoticz.Log ("onCommand - Direct order:" + commande)
              # If the command is a SET-RELAY_ALL command
             if "RELAY-SET_ALL-1," in commande:
                 commande = commande.replace("RELAY-SET_ALL-1,","")
@@ -262,7 +264,7 @@ class BasePlugin:
                 nb_mots= len(valeurs_initiales)
                 # Extraction of parameters
                 commande = commande.replace("RELAY-SET_ONLY,","")
-                temp = command.split (',') # temp contains a list of x mask, y values
+                temp = commande.split (',') # temp contains a list of x mask, y values
                  # Check if the number of parameters is correct and sort the parameters
                 nb_param = len(temp)
                 if (nb_param == 2 or nb_param == 4 or nb_param == 8) and nb_param//2 == nb_mots:
@@ -270,15 +272,15 @@ class BasePlugin:
                         masque.append(int(temp[i]))
                         valeurs_demandees.append(int(temp[i+1]))
                 else:
-                    Domoticz.Error ("onCommand - Error: number of parameters passed to" + Devices [Unit] .Name + "incorrect")
+                    Domoticz.Error ("onCommand - Error: number of parameters passed to" + Devices[Unit].Name + "incorrect")
                     return
                  # Calculation of the modifications to be made to the outputs
                 for i in range(0,nb_mots):
                     valeurs_sorties.append((masque[i] & valeurs_demandees[i]) | (~masque[i] & valeurs_initiales[i]))
-                Debug ("onCommand - Calculated output values:" + str (output_values))                
+                Debug ("onCommand - Calculated output values:" + str (valeurs_sorties))                
                 msg_recu = str(self.KinconyWriteAllOutputs(*valeurs_sorties))
             else:
-                Debug ("onCommand - Unknown command passed to" + Devices [Unit] .Name)
+                Debug ("onCommand - Unknown command passed to" + Devices[Unit].Name)
          # Update of Domoticz
         self.UpdateDomoticz(False, True)
         # Restarting the input monitoring thread
@@ -317,7 +319,7 @@ class BasePlugin:
         """        
         # Log
         Debug("KinconyScan - Call : 'RELAY-SCAN_DEVICE-NOW'")
-        # Envoi trame
+        # sending frame
         KinconyTx = "RELAY-SCAN_DEVICE-NOW"
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
         # Read the return message, restart if the message corresponds to change of the ALARM state of an input
@@ -357,7 +359,7 @@ class BasePlugin:
         """
         # Log
         Debug("KinconyTest - Call : 'RELAY-TEST-NOW'")
-        # Envoi trame
+        # sending frame
         KinconyTx = "RELAY-TEST-NOW"
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
         # Read the return message, restart if the message corresponds to change of the ALARM state of an input
@@ -481,7 +483,7 @@ class BasePlugin:
         #Debug("KinconyWriteOutput - Call")
         # sending frame
         KinconyTx = "RELAY-SET-1," + Output + "," + ("1" if Value == "On" else "0")
-        Debug("KinconyWriteOutput - Envoi :'" + KinconyTx + "'")
+        Debug("KinconyWriteOutput - Sending :'" + KinconyTx + "'")
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
         # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
@@ -527,7 +529,7 @@ class BasePlugin:
         for i in range(0,len(Value)):
             KinconyTx = KinconyTx + str(Value[i]) + ","
         KinconyTx = KinconyTx[:-1]
-        Debug("KinconyWriteAllOutputs - Envoi : '" + KinconyTx + "'")
+        Debug("KinconyWriteAllOutputs - Sending : '" + KinconyTx + "'")
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
         # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
@@ -601,7 +603,7 @@ class BasePlugin:
                     no_bit = 7
                     for sortie in range(1+(mot_en_cours*8), 9+(mot_en_cours*8)):
                         if Devices[int(sortie)].nValue != int(etat_sorties[no_bit]):
-                            Debug ("UpdateDomoticz - Mismatch value output" + str (output) + ", update")
+                            Debug ("UpdateDomoticz - Mismatch value output" + str (sortie) + ", update")
                             Devices[int(sortie)].Update(nValue = int(etat_sorties[no_bit]), sValue = "On" if etat_sorties[no_bit] == 1 else "Off")
                         no_bit -= 1
             else:
@@ -609,7 +611,7 @@ class BasePlugin:
                 no_bit = 7
                 for sortie in range(1, self.nb_sorties+1):
                     if Devices[int(sortie)].nValue != int(etat_sorties[no_bit]):
-                        Debug ("UpdateDomoticz - Mismatch value output" + str (output) + ", update")
+                        Debug ("UpdateDomoticz - Mismatch value output" + str (sortie) + ", update")
                         Devices[int(sortie)].Update(nValue = int(etat_sorties[no_bit]), sValue = "On" if etat_sorties[no_bit] == 1 else "Off")
                     no_bit -= 1
                 
