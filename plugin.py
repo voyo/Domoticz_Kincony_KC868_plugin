@@ -1,4 +1,4 @@
-#
+
 # Author: Ramirez22
 #
 """
@@ -6,93 +6,90 @@
 externallink="https://www.kincony.com/product/relay-controller">
     <description>
         <h2>KinCony KC868</h2><br/>
-        Carte d'entrées/sorties sur protocole TCP<br/>
+        TCP input/output card <br/>
         <br/>
-        <h3>Fonctionnalités</h3>
+        <h3>Functionality</h3>
         <ul style="list-style-type:square">
-            <li>Création des interrupteurs en fonction de la carte selectionnée (relais activables et entrées en lecture seule)</li>
-            <li>Initialisation et dialogue avec la carte</li>
-            <li>Raffraichissement de l'affichage après chaque commande</li>
-            <li>Scrutation des entrées avec fréquence réglable</li>
+             <li> Creation of switches according to the selected card (activatable relays and read-only inputs) </li>
+             <li> Initialization and dialogue with the card </li>
+             <li> Refreshing the display after each command </li>
+             <li> Polling of inputs with adjustable frequency </li>
         </ul>
-        <h3>Modèles supportés</h3>
+        <h3>Device selection</h3>
         <ul style="list-style-type:square">
-            <li>HC868-H16 - 16 sorties, 8 entrées</li>
-            <li>HC868-H4  -  4 sorties, 4 entrées</li>
+            <li>HC868-H16 - 16 outputs, 8 inputs</li>
+            <li>HC868-H4  -  4 outputs, 4 inputs</li>
         </ul>
         <h3>Configuration</h3>
         <ul style="list-style-type:square">
             <li>Adresse IP / Port</li>
         </ul>
-        Saisir l'adresse du dispositif esclave ainsi que le port de communication (par défaut 4196)<br/>
+        Enter the address of the slave device as well as the communication port (default is 4196) <br/>
         <br/>
         <ul style="list-style-type:square">
-            <li>Modèle</li>
+            <li>Mode</li>
         </ul>
-        Choisir le modèle de carte<br/>
+        Choose mode of the card <br/>
         <br/>
         <ul style="list-style-type:square">
-            <li>RAZsortie à la création / mise à jour / sortie / désactivation</li>
+            <li> Reset output on creation / update / exit / deactivation </li>
         </ul>
-        Remise à zéro de toutes les sorties à la création, à la mise à jour, lors de la suppression ou de la désactivation<br/>
+        Reset all outputs on creation, update, deletion or deactivation <br/>
         <br/>
         <ul style="list-style-type:square">
-            <li>Nb de dispositifs virtuels</li>
+            <li> Number of virtual devices </li>
         </ul>
-        Création de dispositifs virtuels. Il est possible de passer diretement des commandes via le champ 'description' du 
-        dispositif. Les commandes possibles sont:<br/>
-        - RELAY-SET_ALL-1,Octet3,Octet2,Octet1,Octet0 (cartes avec 32 sorties)<br/>
-        - RELAY-SET_ALL-1,Octet1,Octet0 (cartes avec 16 sorties)<br/>
-        - RELAY-SET_ALL-1,Octet0 (cartes avec 8 sorties et moins)<br/>
-        - RELAY-SET_ONLY,Mask3,Octet3,Mask2,Octet2,Mask1,Octet1,Mask0,Octet0 (cartes avec 32 sorties)<br/>
-        - RELAY-SET_ONLY,Mask1,Octet1,Mask0,Octet0 (cartes avec 16 sorties)<br/>
-        - RELAY-SET_ONLY,Mask0,Octet0 (cartes avec 8 sorties et moins)<br/>
-        La commande RELAY-SET_ALL-1 force toutes les sorties à la valeur décimale spécifiée (0 à 255)<br/>
-        La commande RELAY-SET_ONLY, change uniquement les sorties dont le mask est à 1 (0 à 255), les autres 
-        sorties restent inchangées.<br/>
-        <br/>
+       Creation of virtual devices. It is possible to place orders directly via the 'description' field of the device. The possible commands are: <br/>
+         - RELAY-SET_ALL-1, Byte3, Byte2, Byte1, Byte0 (cards with 32 outputs) <br/>
+         - RELAY-SET_ALL-1, Byte1, Byte0 (cards with 16 outputs) <br/>
+         - RELAY-SET_ALL-1, Byte0 (cards with 8 outputs and less) <br/>
+         - RELAY-SET_ONLY, Mask3, Octet3, Mask2, Octet2, Mask1, Octet1, Mask0, Octet0 (cards with 32 outputs) <br/>
+         - RELAY-SET_ONLY, Mask1, Octet1, Mask0, Octet0 (cards with 16 outputs) <br/>
+         - RELAY-SET_ONLY, Mask0, Octet0 (cards with 8 outputs and less) <br/>
+         The RELAY-SET_ALL-1 command forces all outputs to the specified decimal value (0 to 255) <br/>
+         The RELAY-SET_ONLY command changes only the outputs whose mask is at 1 (0 to 255), the others outputs remain unchanged. <br/>
+         <br/> 
         <ul style="list-style-type:square">
-            <li>Fréquence de scrutation des entrées</li>
+            <li> Input polling frequency </li>
         </ul>
-        Plus la fréquence est élevée, plus la capture des entrées est rapide et plus les évènements rapides peuvent être 
-        capturés. Cependant, la charge du réseau et du CPU augmente d'autant... A adapter en fonction de vos besoins.<br/>
-        <br/>
-        Lien vers un site commercial : <a href="https://kincony.aliexpress.com/store/group/Smart-Controller/807891_259382457.html?spm=a2g0w.12010612.1000001.12.33545853zn9vxT" target="_blank">Aliexpress</a>
+        The higher the frequency, the faster the input capture and the faster the events can be
+        captured. However, the network and CPU load increases as much ... To be adapted according to your needs. <br/>
+        Link to commercial site: <a href="https://kincony.aliexpress.com/store/group/Smart-Controller/807891_259382457.html?spm=a2g0w.12010612.1000001.12.33545853zn9vxT" target="_blank">Aliexpress</a>
     </description>
     <params>
-        <param field="Address" label="Adresse IP" width="150px" required="true" />
+        <param field="Address" label="Address IP" width="150px" required="true" />
         <param field="Port" label="Port" width="80px" required="true" default="4196" />
-        <param field="Mode1" label="Modèle" width="250px" required="true">
+        <param field="Mode1" label="Mode1" width="250px" required="true">
             <options>
-                <option label="HC868-H16 (16 sorties/8 entrées)" value="16 8" />
-                <option label="HC868-H4 (4 sorties/4 entrées)" value="4 4" />
+                <option label="HC868-H16 (16 relays/8 inputs)" value="16 8" />
+                <option label="HC868-H4 (4 relays/4 inputs)" value="4 4" />
             </options>
         </param>
-        <param field="Mode2" label="RAZ sorties à la création/mise à jour" width="85px" required="true">
+        <param field = "Mode2" label = "Reset outputs on creation / update" width = "85px" required = "true">
             <options>
-                <option label="Non" value="False" />
-                <option label="Oui" value="True" default="true" />
+                <option label="No" value="False" />
+                <option label="Yes" value="True" default="true" />
             </options>
         </param>
-        <param field="Mode3" label="RAZ sorties à la suppression/désactivation" width="85px" required="true">
+        <param field = "Mode3" label = "Reset outputs on deletion / deactivation" width = "85px" required = "true">
             <options>
-                <option label="Non" value="False" />
-                <option label="Oui" value="True" default="true" />
+                <option label="No" value="False" />
+                <option label="Yes" value="True" default="true" />
             </options>
         </param>
-        <param field="Mode4" label="Nb de dispositifs virtuels" width="85px"  default="0"/>
-        <param field="Mode5" label="Fréquence de scrutation des entrées" width="250px" required="true">
+        <param field="Mode4" label="Number of virtual devices" width="85px"  default="0"/>
+        <param field = "Mode5" label = "Input polling frequency" width = "250px" required = "true">
             <options>
-                <option label="5 fois par secondes (200 ms)" value="2" />
-                <option label="4 fois par secondes (250 ms)" value="3" default="true" />
-                <option label="Env. 3 fois par secondes (300 ms)" value="4" />
-                <option label="2 fois par secondes (500 ms)" value="8" />
+                <option label="5 times per second (200 ms)" value="2" />
+                <option label="4 times per second (250 ms)" value="3" default="true" />
+                <option label = "Approx. 3 times per second (300 ms)" value = "4" />
+                <option label="2 times per second (500 ms)" value="8" />
             </options>
         </param>
         <param field="Mode6" label="Debug" width="85px">
             <options>
-                <option label="Activé" value="True" />
-                <option label="Silencieux" value="False" default="true" />
+                <option label = "Enabled" value = "True" />
+                <option label = "Silent" value = "False" default = "true" />
             </options>
         </param>
     </params>
@@ -120,11 +117,11 @@ class BasePlugin:
 
     def onStart(self):
         """
-        Appelée à la création du matériel
-        Création des dispositifs d'entrées et de sorties + lancement de la communication
+        Called to the creation of the material
+        Creation of input and output devices + launch of communication
         """
         global debug
-        # Variables et paramètres divers
+        # Miscellaneous variables and parameters
         self.host = Parameters["Address"]
         self.port = int(Parameters["Port"])
         # ~ self.heartbeat_count = 1
@@ -136,44 +133,45 @@ class BasePlugin:
             debug = True
         else:
             debug = False
-        Debug("onStart appelé")
-        # Création des dispositifs (si besoin) 
+        Debug("onStart call")
+        # Creation of devices (if necessary)
         if (len(Devices) == 0):
-            Debug("onStart - Création dispositifs. Nombre d'entrées : " + str(self.nb_entrees) + ", nombre de sorties : " + str(self.nb_sorties))
-            # Sorties
+            Debug ("onStart - Creating devices. Number of inputs:" + str (self.nb_entrees) + ", number of outputs:" + str (self.nb_sorties))
+
+            # Outputs
             for sortie in range(1, self.nb_sorties + 1):
                 Domoticz.Device(Unit=sortie, Name="Relais " + str(sortie), TypeName="Switch", Used=1).Create()
-            # Entrées
+            # Input
             for entree in range(1, self.nb_entrees + 1):
                 Domoticz.Device(Unit=(entree+32), Name="Entree " + str(entree), Type=244, Subtype=73, Switchtype=2, Used=1).Create()
-            # S'il y a des dispositifs "virtuels"
+            # If there are "virtual" devices
             Nb_dispositifs_virtuels = int(Parameters["Mode4"])
             if Nb_dispositifs_virtuels > 0:
-                Debug("onStart - Création de " + str(Nb_dispositifs_virtuels) + " dispositifs virtuels")
+                Debug ("onStart - Creation of" + str (Nb_dispositifs_virtuels) + "virtual devices")
                 for virtuel in range(1, Nb_dispositifs_virtuels + 1):
-                    Domoticz.Device(Unit=(virtuel+64), Name="Virtuel " + str(virtuel), Type=244, Subtype=73, Switchtype=9, Used=1).Create()
+                    Domoticz.Device(Unit=(virtuel+64), Name="Virtual " + str(virtuel), Type=244, Subtype=73, Switchtype=9, Used=1).Create()
         if debug:
             DumpConfigToLog()
         self.connexion_ok = self.KinconyConnexion()
-        # ~ # Connexion avec la carte
-        # ~ self.connexion_TCP.connect((self.host,self.port))
-        # ~ Debug("onStart - Tentative de connexion avec la carte Kincony IP:" + self.host)
-        # ~ msg_recu = self.KinconyScan()
-        # ~ if ("RELAY-SCAN_DEVICE-CHANNEL_" in msg_recu) and (",OK" in msg_recu):
-            # ~ Debug("onStart - Esclave présent, tentative de communication")
-            # ~ msg_recu = self.KinconyTest()
+         # ~ # Connection with the card
+         # ~ self.connexion_TCP.connect ((self.host, self.port)) 
+         # ~ Debug ("onStart - Attempt to connect with Kincony IP card:" + self.host)
+         # ~ msg_recu = self.KinconyScan ()
+         # ~ if ("RELAY-SCAN_DEVICE-CHANNEL_" in msg_recu) and (", OK" in msg_recu):
+             # ~ Debug ("onStart - Slave present, communication attempt")
+            # ~ msg_recu = self.KinconyTest ()
             # ~ if ("OK" in msg_recu):
-                # ~ Domoticz.Status("onStart - Communication OK avec la carte Kincony IP:" + self.host)
+                # ~ Domoticz.Status ("onStart - Communication OK with the Kincony IP card:" + self.host)
             # ~ else:
-                # ~ Domoticz.Error("onStart - Erreur de communication: '" + msg_recu + "'")
+                # ~ Domoticz.Error ("onStart - Communication error: '" + msg_recu + "'")
                 # ~ return
-        # ~ else:
-            # ~ Domoticz.Error("onStart - Erreur de communication: '" + msg_recu + "'")
-            # ~ return
-        # Remise à zéro des sorties à la connexion
+         # ~ else:
+             # ~ Domoticz.Error ("onStart - Communication error: '" + msg_recu + "'")
+             # ~ return
+         # Reset outputs on connection
         if self.connexion_ok:
             if Parameters["Mode2"] == "True":
-                Debug("onStart - Remise à zéro des sorties")
+                Debug ("onStart - Reset outputs to zero")
                 valeurs_sorties = list()
                 if self.nb_sorties == 32:
                     valeurs_sorties = (0,0,0,0)
@@ -183,30 +181,30 @@ class BasePlugin:
                     valeurs_sorties.append(0)
                 msg_recu = str(self.KinconyWriteAllOutputs(*valeurs_sorties))
             self.UpdateDomoticz(True, True)
-            # Surveillance des entrées
+            # Surveillance des entrC)es
             self.stop_thread = False
             self.checkInputs.start()
 
 
     def onStop(self):
         # Log
-        Debug("onStop appelé")
-        # Liste des threads en cours
+        Debug("onStop called")
+        # List of current threads
         for thread in threading.enumerate():
-            Debug("onStop - Le thread '" + thread.name + "' est toujours actif")
-        # Fermeture du thread
+            Debug ("onStop - The thread '" + thread.name + "' is still active")
+        # Closing the thread
         self.stop_thread = True
-        Debug("onStop - Envoi de la commande d'arrêt du thread")
-        # Attente que les thread soient fermés
+        Debug ("onStop - Send the command to stop the thread")
+         # Wait for threads to be closed
         while (threading.active_count() > 1):
             for thread in threading.enumerate():
                 if (thread.name != threading.current_thread().name):
-                    Domoticz.Log("onStop - '"+thread.name+"' est toujours en éxécution. Attente fin du thread")
+                  Domoticz.Log ("onStop - '" + thread.name + "' is still running. Waiting for thread to end")  
             time.sleep(1.0)
-        # Remise à zéro des sorties à la suppression ?
+        # Reset outputs to zero on deletion?        
         if self.connexion_ok:
             if Parameters["Mode3"] == "True":
-                Debug("onStop - Remise à zéro des sorties")
+                Debug ("onStop - Reset outputs to zero")                
                 valeurs_sorties = list()
                 if self.nb_sorties == 32:
                     valeurs_sorties = (0,0,0,0)
@@ -216,200 +214,200 @@ class BasePlugin:
                     valeurs_sorties.append(0)
                 msg_recu = str(self.KinconyWriteAllOutputs(*valeurs_sorties))
             self.UpdateDomoticz(True, True)
-            # Fermeture du socket
+            # Close the socket            
             self.connexion_TCP.close()
         
         
     def onCommand(self, Unit, Command, Level, Hue):
         """
-        Appelée à chaque changement d'un Device. Si le device en question est d'un 
-        type virtuel (n° > à 64), lecture de la commande passée en Description du Device.
-        Les valeurs sont des entiers (entre 0 et 255, correspondant à la valeur d'un mot de 8 bits)
-        - RELAY-SET_ALL-1,... fonctionnement standar d'une commande de ce type
-        - RELAY-SET_ONLY,<mask>,<value>,... le masque permet de ne pas modifier les bits à 0 
-          (ils conserveront leur état).
-        """
+         Called each time a Device is changed. If the device in question is a
+         virtual type (n > 64), reading of the command passed in Description of the Device.
+         The values are integers (between 0 and 255, corresponding to the value of an 8-bit word)
+         - RELAY-SET_ALL-1, ... standard operation of a command of this type
+         - RELAY-SET_ONLY, <mask>, <value>, ... the mask allows not to modify the bits to 0
+           (they will keep their state).
+        """        
         # Log
-        Debug("onCommand appelé. Unit: " + str(Unit) + ": Parameter '" + str(Command) + "', Level: " + str(Level) + ", Hue:" + str(Hue))
-        # Si la connexion n'est pas active, retour
+        Debug ("onCommand called. Unit:" + str (Unit) + ": Parameter '" + str (Command) + "', Level:" + str (Level) + ", Hue:" + str (Hue))
+        # If the connection is not active, return
         if not self.connexion_ok:
-            Domoticz.Error("Commande impossible, connexion avec carte perdue")
+            Domoticz.Error ("Command impossible, lost connection to card")
             return
-        # Si la connexion est OK, arrêt du thread de vérification des entrées
+        # If the connection is OK, stop the entry verification thread
         self.stop_thread = True
         self.checkInputs.join()
-        # Pilotage des sorties individuellement (les sorties sont systématiquement <= 32)
+        # Control of outputs individually (outputs are systematically <= 32)
         if Unit <= 32:
             msg_recu = self.KinconyWriteOutput(str(Unit), str(Command))
-        # Pilotage des sorties par device 'virtuel' 
+        # Control of outputs by 'virtual' device
         if Unit >= 65:
             valeurs_sorties = list()
             commande = Devices[Unit].Description
-            Domoticz.Log("onCommand - Ordre direct : " + commande)
-            # Si la commande est une commande de type SET-RELAY_ALL
+            Domoticz.Log ("onCommand - Direct order:" + command)
+             # If the command is a SET-RELAY_ALL command
             if "RELAY-SET_ALL-1," in commande:
                 commande = commande.replace("RELAY-SET_ALL-1,","")
                 valeurs_sorties = commande.split(',')
                 msg_recu = str(self.KinconyWriteAllOutputs(*valeurs_sorties))
-            # Pilotage de sorties spécifiques. Données à transmettre : masque, valeur (x nombre de mots)
+            # Recovery of the value of the initial outputs
             elif "RELAY-SET_ONLY," in commande:
                 valeurs_initiales = list()
                 valeurs_demandees = list()
                 masque = list()
                 temp = list()
-                # Récupération de la valeur des sorties initiales
+                # Recovery of the value of the initial outputs
                 msg_recu = self.KinconyReadOutputs()
                 valeurs_initiales = [int(i) for i in msg_recu.split(',')]
-                #Debug("onCommand - Valeurs initiales sorties : " + str(valeurs_initiales))
+                #Debug ("onCommand - Initial values output:" + str (initial_values))
                 nb_mots= len(valeurs_initiales)
-                # Extraction des paramètres
+                # Extraction of parameters
                 commande = commande.replace("RELAY-SET_ONLY,","")
-                temp = commande.split(',')  # temp contient une liste de x masque, y valeurs
-                # Vérification si le nombre de paramètres est conforme et tri des paramètres
+                temp = command.split (',') # temp contains a list of x mask, y values
+                 # Check if the number of parameters is correct and sort the parameters
                 nb_param = len(temp)
                 if (nb_param == 2 or nb_param == 4 or nb_param == 8) and nb_param//2 == nb_mots:
                     for i in range(0,nb_param,2):
                         masque.append(int(temp[i]))
                         valeurs_demandees.append(int(temp[i+1]))
                 else:
-                    Domoticz.Error("onCommand - Erreur : nombre de paramètres passés à " + Devices[Unit].Name + " incorrect")
+                    Domoticz.Error ("onCommand - Error: number of parameters passed to" + Devices [Unit] .Name + "incorrect")
                     return
-                # Calcul des modifications à apporter aux sorties
+                 # Calculation of the modifications to be made to the outputs
                 for i in range(0,nb_mots):
                     valeurs_sorties.append((masque[i] & valeurs_demandees[i]) | (~masque[i] & valeurs_initiales[i]))
-                Debug("onCommand - Valeurs de sorties calculées : " + str(valeurs_sorties))
+                Debug ("onCommand - Calculated output values:" + str (output_values))                
                 msg_recu = str(self.KinconyWriteAllOutputs(*valeurs_sorties))
             else:
-                Debug("onCommand - Commande inconnue passée à " + Devices[Unit].Name)
-        # Mise à jour de Domoticz
+                Debug ("onCommand - Unknown command passed to" + Devices [Unit] .Name)
+         # Update of Domoticz
         self.UpdateDomoticz(False, True)
-        # Remise en route du thread de surveillance des entrées
+        # Restarting the input monitoring thread
         self.stop_thread = False
         self.checkInputs = threading.Thread(name="ThreadCheckInputs", target = BasePlugin.KinconyCheckInputs, args=(self,))
         self.checkInputs.start()
 
 
-    def onHeartbeat(self):
-        """
-        Appel régulier pour tester si le thread de scrutation des entrées est toujours actif
-        Le relance si ce n'est pas le cas
-        """
-        # Log
-        Debug("onHeartbeat appelé")
-        if not self.connexion_ok:
-            self.connexion_ok = self.KinconyConnexion()
-        if not self.connexion_ok:
-            return
-        # Vérification de l'activation du thread de vérification de l'état des entrées
-        if not self.checkInputs.is_alive():
-            # Liste des threads en cours
-            for thread in threading.enumerate():
-                Debug("onHeartbeat - Thread actifs : '" + thread.name + "'")
-            Domoticz.Error("onHeartbeat - Le thread n'existe plus, tentative de redémarrage")
-            self.stop_thread = False
-            self.checkInputs = threading.Thread(name="ThreadCheckInputs", target = BasePlugin.KinconyCheckInputs, args=(self,))
-            self.checkInputs.start()
-
+    def onHeartbeat (self):
+         """
+          Regular call to test if the input polling thread is still active
+          The revival if this is not the case
+         """
+         # Log
+         Debug ("onHeartbeat called")
+         if not self.connexion_ok:
+             self.connexion_ok = self.KinconyConnexion ()
+         if not self.connexion_ok:
+             return
+         # Checking the activation of the input status checking thread
+         if not self.checkInputs.is_alive ():
+             # List of current threads
+             for thread in threading.enumerate ():
+                 Debug ("onHeartbeat - Active threads: '" + thread.name + "'")
+             Domoticz.Error ("onHeartbeat - The thread no longer exists, attempting to restart")
+             self.stop_thread = False
+             self.checkInputs = threading.Thread(name="ThreadCheckInputs", target = BasePlugin.KinconyCheckInputs, args=(self,))
+             self.checkInputs.start ()
+           
         
     def KinconyScan(self):
         """
-        Initialisation de la communication avec la carte Kincony
-        Correspond à l'envoi de la trame TCP:
-        - RELAY-SCAN_DEVICE-NOW (réponse doit contenir OK)
-        """
+         Initialization of communication with the Kincony card
+         Corresponds to sending the TCP frame:
+         - RELAY-SCAN_DEVICE-NOW , response must contain 'OK'
+        """        
         # Log
-        Debug("KinconyScan - Appel : 'RELAY-SCAN_DEVICE-NOW'")
+        Debug("KinconyScan - Call : 'RELAY-SCAN_DEVICE-NOW'")
         # Envoi trame
         KinconyTx = "RELAY-SCAN_DEVICE-NOW"
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
-        # Lecture du message de retour, relance si le message correspond à une ALARM de changement d'état d'une entrée
+        # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
             try:
                 msg_recu = self.connexion_TCP.recv(256)
             except socket.timeout:
-                Domoticz.Error("KinconyScan - Erreur de communication")
+                Domoticz.Error ("KinconyScan - Communication error")
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             except Exception as err:
-                Domoticz.Error("KinconyScan - Erreur :" + str(err))
+                Domoticz.Error("KinconyScan - Error :" + str(err))
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             msg_recu.decode()
             msg_recu = str(msg_recu)
             if "RELAY-ALARM" in msg_recu:
-                Debug("KinconyScan - relecture confirmation")
+                Debug ("KinconyScan - Reply confirmation")
                 continue
             elif ("RELAY-SCAN_DEVICE" in msg_recu) and (",OK" in msg_recu):
                 start = msg_recu.find("RELAY-SCAN_DEVICE")
                 end = (msg_recu.find(",OK"))+3
-                Debug("KinconyScan - Réception OK :'" + msg_recu[start:end] + "'")
+                Debug("KinconyScan - Reception OK :'" + msg_recu[start:end] + "'")
                 return(msg_recu[start:end])
             else:
-                Domoticz.Error("KinconyReadInputs - Erreur")
+                Domoticz.Error("KinconyReadInputs - Error")
                 return ("ERROR")
 
     
     def KinconyTest(self):
         """
-        Initialisation de la communication avec la carte Kincony
-        Correspond à l'envoi de la trame RELAY-TEST-NOW 
-        Réponse doit contenir HOST-TEST-START
+         Initialization of communication with the Kincony card
+         Corresponds to sending the RELAY-TEST-NOW frame
+         response must contain HOST-TEST-START
         """
         # Log
-        Debug("KinconyTest - Appel : 'RELAY-TEST-NOW'")
+        Debug("KinconyTest - Call : 'RELAY-TEST-NOW'")
         # Envoi trame
         KinconyTx = "RELAY-TEST-NOW"
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
-        # Lecture du message de retour, relance si le message correspond à une ALARM de changement d'état d'une entrée
+        # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
             try:
                 msg_recu = self.connexion_TCP.recv(256)
             except socket.timeout:
-                Domoticz.Error("KinconyTest - Erreur de communication")
+                Domoticz.Error ("KinconyScan - Communication error")
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             except Exception as err:
-                Domoticz.Error("KinconyTest - Erreur :" + str(err))
+                Domoticz.Error("KinconyTest - Error :" + str(err))
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             msg_recu.decode()
             msg_recu = str(msg_recu)
             if "RELAY-ALARM" in msg_recu:
-                Debug ("KinconyTest - Relecture confirmation")
+                Debug ("KinconyScan - Reply confirmation")
                 continue
             elif "HOST-TEST-START" in msg_recu:
                 Debug("KinconyTest - Communication OK")
                 return ("OK")
             else:
-                Domoticz.Error("KinconyTest - Erreur : " + msg_recu)
+                Domoticz.Error("KinconyTest - Error : " + msg_recu)
                 return("ERROR")
 
         
     def KinconyReadInputs(self):
         """
-        Lecture des entrées de la carte. Retourne la valeur de l'octet 
-        d'entrée de la carte si OK (sous forme d'entier), "ERROR" sinon
+         Reading the card inputs. Returns the value of the byte
+         input of the card if OK (as an integer), "ERROR" otherwise
         """
         # Log
-        Debug("KinconyReadInputs - Appel: 'RELAY-GET_INPUT-1'")
-        # Envoi trame
+        Debug("KinconyReadInputs - Call: 'RELAY-GET_INPUT-1'")
+        # sending frame
         KinconyTx = "RELAY-GET_INPUT-1"
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
-        # Lecture du message de retour, relance si le message correspond à une ALARM de changement d'état d'une entrée
+        # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
             try:
                 msg_recu = self.connexion_TCP.recv(256)
             except socket.timeout:
-                Domoticz.Error("KinconyReadInputs - Erreur de communication")
+                Domoticz.Error ("KinconyScan - Communication error")
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             except Exception as err:
-                Domoticz.Error("KinconyReadInputs - Erreur :" + str(err))
+                Domoticz.Error("KinconyReadInputs - Error :" + str(err))
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
@@ -417,193 +415,193 @@ class BasePlugin:
             msg_recu.decode()
             msg_recu = str(msg_recu)
             if "RELAY-ALARM" in msg_recu:
-                Debug("KinconyReadInputs - relecture confirmation")
+                Debug ("KinconyScan - Reply confirmation")
                 continue
             elif ("RELAY-GET_INPUT-1," in msg_recu) and (",OK" in msg_recu):
                 start = msg_recu.find("RELAY-GET_INPUT-1,")
                 end = msg_recu.find(",OK")
-                Debug("KinconyReadInputs - Réception état entrées OK :'" + msg_recu[start:end+3] + "'")
+                Debug("KinconyReadInputs - Reception stat of input OK :'" + msg_recu[start:end+3] + "'")
                 start = start + len("RELAY-GET_INPUT-1,")
                 return(msg_recu[start:end])
             else:
-                Domoticz.Error("KinconyReadInputs - Erreur '" + msg_recu + "'")
+                Domoticz.Error("KinconyReadInputs - Error '" + msg_recu + "'")
                 return ("ERROR")
 
 
     def KinconyReadOutputs(self):
         """
-        Lecture des sorties de la carte. Retourne la valeur de chaque octet de sortie
-        de la carte (entier, sous la forme octet3, octet2, octet1, octet0 pour une carte
-        de 32 sorties, octet1, octet0 pour une carte à 16 sorties, octet0 pour les cartes
-        avec 8 sorties et moins) si OK, sinon "ERROR"
+         Reading outputs of the card. Returns the value of each output byte
+         of the card (integer, in the form byte3, byte2, byte1, byte0 for a card with 
+         32 outputs, byte1, byte0 for a card with 16 outputs, byte0 for the cards
+         with 8 outputs and less) if OK, otherwise "ERROR"
         """
         # Log
-        Debug("KinconyReadOutputs - Appel : 'RELAY-STATE-1'")
-        # Envoi trame
+        Debug("KinconyReadOutputs - Call : 'RELAY-STATE-1'")
+        # sending frame
         KinconyTx = "RELAY-STATE-1"
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
-        # Lecture du message de retour, relance si le message correspond à une ALARM de changement d'état d'une entrée
+        # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
             try:
                 msg_recu = self.connexion_TCP.recv(256)
             except socket.timeout:
-                Domoticz.Error("KinconyReadOutputs - Erreur de communication")
+                Domoticz.Error ("KinconyScan - Communication error")
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             except Exception as err:
-                Domoticz.Error("KinconyReadOutputs - Erreur :" + str(err))
+                Domoticz.Error("KinconyReadOutputs - Error :" + str(err))
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             msg_recu.decode()
             msg_recu = str(msg_recu)
             if "RELAY-ALARM" in msg_recu:
-                Debug("KinconyReadOutputs - Relecture confirmation")
+                Debug("KinconyReadOutputs - Reply confirmation")
                 continue
             elif ("RELAY-STATE-1," in msg_recu) and (",OK" in msg_recu):
                 start = msg_recu.find("RELAY-STATE-1,")
                 end = msg_recu.find(",OK")
-                Debug("KinconyReadOutputs - Réception état sorties OK :'" + msg_recu[start:end+3] + "'")
+                Debug("KinconyReadInputs - Reception stat of input OK :'" + msg_recu[start:end+3] + "'")
                 start = start + len("RELAY-STATE-1,")
                 return(msg_recu[start:end])
             else:
-                Domoticz.Error("KinconyReadOutputs - Erreur '" + msg_recu + "'")
+                Domoticz.Error("KinconyReadOutputs - Error '" + msg_recu + "'")
                 return ("ERROR")
         
         
     def KinconyWriteOutput(self, Output, Value):
         """
-        Ecriture d'une sortie de la carte.
-        Paramètres : Output : entier correspondant au numéro de la sortie à activer
-                     Value  : 0 ou 1
-        Renvoie "OK" si tout s'est bien passé, ERROR dans le cas contraire
+        Writing an output from the card.
+         Parameters: Output: integer corresponding to number of active output
+                      Value: 0 or 1
+         Returns "OK" if everything went well,  ERROR otherwise
         """
         # Log
-        #Debug("KinconyWriteOutput - Appel")
-        # Envoi trame
+        #Debug("KinconyWriteOutput - Call")
+        # sending frame
         KinconyTx = "RELAY-SET-1," + Output + "," + ("1" if Value == "On" else "0")
         Debug("KinconyWriteOutput - Envoi :'" + KinconyTx + "'")
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
-        # Lecture du message de retour, relance si le message correspond à une ALARM de changement d'état d'une entrée
+        # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
             try:
                 msg_recu = self.connexion_TCP.recv(256)
             except socket.timeout:
-                Domoticz.Error("KinconyWriteOutput - Erreur de communication")
+                Domoticz.Error ("KinconyScan - Communication error")
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             except Exception as err:
-                Domoticz.Error("KinconyWriteOutput - Erreur :" + str(err))
+                Domoticz.Error("KinconyWriteOutput - Error :" + str(err))
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             msg_recu.decode()
             msg_recu = str (msg_recu)
             if "RELAY-ALARM" in msg_recu:
-                Debug ("KinconyWriteOutput - Relecture confirmation")
+                Debug ("KinconyWriteOutput - Reply confirmation")
                 continue
             elif ("RELAY-SET-1," in msg_recu) and (",OK" in msg_recu):
-                Debug("KinconyWriteOutput - Pilotage sortie OK")
+                Debug("KinconyWriteOutput - Output control OK")
                 return("OK")
             else:
-                Domoticz.Error("KinconyWriteOutput - Erreur")
+                Domoticz.Error("KinconyWriteOutput - Error")
                 return ("ERROR")
         
         
     def KinconyWriteAllOutputs(self, *Value):
         """
-        Ecriture de toutes les sorties de la carte. 
-        Valeurs passées en décimal correspondant à la valeur binaire d'un octet (0 à 255)
-        - Si 32 sorties : 4 octets dans l'ordre 4, 3, 2, 1
-        - Si 16 sorties : 2 octets dans l'ordre 2, 1
-        - Si 8, 4 ou 2 sorties : 1 seul octet
+        Write all the outputs of the card.
+         Passed values are  in decimal corresponding the binary value of a byte (0 - 255)
+         - If 32 outputs: 4 bytes in the order 4, 3, 2, 1
+         - If 16 outputs: 2 bytes in order 2, 1
+         - If 8, 4 or 2 outputs: 1 single byte
         """
-        # Contrôle cohérence paramètres / nombre de mots de sorties de la carte (nombre de sorties / 8. Si < à 8, résultat doit être égal à 1)
+        # Parameter consistency check / number of output words of the card (number of outputs / 8. If < 8 ) result must be equal to 1)        
         if len(Value) != ceil(self.nb_sorties / 8):
-            Domoticz.Error("KinconyWriteAllOutputs - Erreur : nombre de paramètres incohérents")
+            Domoticz.Error ("KinconyWriteAllOutputs - Error: number of inconsistent parameters")
             return
-        # Calcul des valeurs à transmettre
+        # Calculation of values to transmit
         KinconyTx = "RELAY-SET_ALL-1,"
         for i in range(0,len(Value)):
             KinconyTx = KinconyTx + str(Value[i]) + ","
         KinconyTx = KinconyTx[:-1]
         Debug("KinconyWriteAllOutputs - Envoi : '" + KinconyTx + "'")
         self.connexion_TCP.sendto(KinconyTx.encode(), (self.host,self.port))
-        # Lecture du message de retour, relance si le message correspond à une ALARM de changement d'état d'une entrée
+        # Read the return message, restart if the message corresponds to change of the ALARM state of an input
         while True:
             try:
                 msg_recu = self.connexion_TCP.recv(256)
             except socket.timeout:
-                Domoticz.Error("KinconyWriteAllOutputs - Erreur de communication")
+                Domoticz.Error ("KinconyScan - Communication error")
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             except Exception as err:
-                Domoticz.Error("KinconyWriteAllOutputs - Erreur :" + str(err))
+                Domoticz.Error("KinconyWriteAllOutputs - Error :" + str(err))
                 self.connexion_TCP.close()
                 self.connexion_ok = False
                 return ("ERROR")
             msg_recu.decode()
             msg_recu = str (msg_recu)
             if "RELAY-ALARM" in msg_recu:
-                Debug ("KinconyWriteAllOutputs - Relecture confirmation")
+                Debug ("KinconyWriteAllOutputs - Reply confirmation")
                 continue
             elif ("RELAY-SET_ALL-1," in msg_recu) and (",OK" in msg_recu):
-                Debug("KinconyWriteAllOutputs - Pilotage sorties OK")
+                Debug("KinconyWriteAllOutputs -Output control OK")
                 return("OK")
             else:
-                Domoticz.Error("KinconyWriteAllOutputs - Erreur")
+                Domoticz.Error("KinconyWriteAllOutputs - Error")
                 return ("ERROR")
 
 
     def UpdateDomoticz(self, Inputs, Outputs):
         """
-        Mise à jour de l'état des entrées/sorties de l'interface dans Domoticz
-        Accepte en paramètre 2 valeurs booléennes pour vérifier les entrées et/ou les sorties
+        Update of the input / output status of the interface in Domoticz
+        Accepts as a parameter 2 boolean values to check the inputs and / or the outputs
         """
         # Log
-        Debug("UpdateDomoticz - Appel (MaJ entrées = " + ("oui" if Inputs else "Non") + " MaJ sorties = " + ("oui" if Outputs else "Non") + ")")
+        Debug ("UpdateDomoticz - Call my inputs =" + ("yes" if Inputs else "No") + "My outputs =" + ("yes" if Outputs else "No") + ")")
         if Inputs:
-            # Mise à jour des entrées
+            # Updating entries
             msg_recu = self.KinconyReadInputs()
-            # Traitement GET entrées (lecture des entrées et mise à jour Domoticz)
+            # GET input processing (reading input and Domoticz update)
             if ("ERROR" in msg_recu):
-                Domoticz.Error("UpdateDomoticz - Erreur réception état entrées: '" + msg_recu + "'")
+                Domoticz.Error ("UpdateDomoticz - Error receiving input state: '" + msg_recu + "'")
                 return
-            Debug("UpdateDomoticz - Réception état entrées OK :'" + msg_recu + "'")
-            # transformation en binaire et inversion des bits (^255), suppression du '0b' ([2:]
-            # et complétion du mot avec des 0 pour obtenir un mot de 8 bits (zfill(8))
+            Debug ("UpdateDomoticz - Receiving input state - OK: '" + msg_recu + "'")
+            # binary transformation and bit inversion (^ 255), removal of '0b' ([2:]
+            # and complete the word with 0's to obtain an 8-bit word (zfill (8))            
             etat_entrees = bin(int(msg_recu)^255)[2:].zfill(8)
             no_bit = 7
-            # Pour chaque bit du mot d'entrée lu, si la valeur diffère de Domoticz, mise à jour
+            # For each bit of the input word read, if the value differs from Domoticz, update
             for entree in range(33, self.nb_entrees + 33):
                 if Devices[int(entree)].nValue != int(etat_entrees[no_bit]):
-                    Domoticz.Status("Entrée " + str(entree) + " ('" + Devices[int(entree)].Name + "') à " + str(etat_entrees[no_bit]))
-                    Debug("UpdateDomoticz - Discordance valeur entrée " + str(entree) + ", mise à jour")
+                    Domoticz.Status("Input " + str(entree) + " ('" + Devices[int(entree)].Name + "') " + str(etat_entrees[no_bit]))
+                    Debug ("UpdateDomoticz - Input value mismatch" + str (input) + ", update")
                     Devices[int(entree)].Update(nValue = int(etat_entrees[no_bit]), sValue = "Open" if etat_entrees[no_bit] == 1 else "Closed")
                 no_bit -= 1
-        # Mise à jour des sorties
+        # update of outputs
         if Outputs:
             msg_recu = self.KinconyReadOutputs()
-            # Traitement STATE des sorties (lecture des sorties et mise à jour Domoticz)
+            # STATE processing of outputs (reading outputs and update Domoticz)
             if ("ERROR" in msg_recu):
-                Domoticz.Error("UpdateDomoticz - Erreur réception état sorties: '" + msg_recu + "'")
+                Domoticz.Error ("UpdateDomoticz - Error outputs state reception: '" + msg_recu + "'")
                 return
-            Debug("UpdateDomoticz - Réception état sorties OK : '" + msg_recu + "'")
+            Debug("UpdateDomoticz - Output state reception - OK : '" + msg_recu + "'")
             mots = list()
             mots = msg_recu.split(",")
             mots.reverse()
             nb_mots = len(mots)
-            # Extraction du nombre de mots renvoyés par la carte
+            # Extraction of the number of words returned by the card
             if nb_mots != 1:
                 for mot_en_cours in range(nb_mots):
                     etat_sorties = bin(int(mots[mot_en_cours]))[2:].zfill(8)
                     no_bit = 7
                     for sortie in range(1+(mot_en_cours*8), 9+(mot_en_cours*8)):
                         if Devices[int(sortie)].nValue != int(etat_sorties[no_bit]):
-                            Debug("UpdateDomoticz - Discordance valeur sortie " + str(sortie) + ", mise à jour")
+                            Debug ("UpdateDomoticz - Mismatch value output" + str (output) + ", update")
                             Devices[int(sortie)].Update(nValue = int(etat_sorties[no_bit]), sValue = "On" if etat_sorties[no_bit] == 1 else "Off")
                         no_bit -= 1
             else:
@@ -611,58 +609,58 @@ class BasePlugin:
                 no_bit = 7
                 for sortie in range(1, self.nb_sorties+1):
                     if Devices[int(sortie)].nValue != int(etat_sorties[no_bit]):
-                        Debug("UpdateDomoticz - Discordance valeur sortie " + str(sortie) + ", mise à jour")
+                        Debug ("UpdateDomoticz - Mismatch value output" + str (output) + ", update")
                         Devices[int(sortie)].Update(nValue = int(etat_sorties[no_bit]), sValue = "On" if etat_sorties[no_bit] == 1 else "Off")
                     no_bit -= 1
                 
 
     def KinconyCheckInputs(self):
         """
-        Vérification des entrées.
-        La boucle à la fin de la vérification permet d'interrompre le cycle plus rapidement si une commande 
-        de pilotage de sortie est reçue (onCommand). La fréquence de scrutation des entrées est paramétrable
-        dans les options du plugin. 
+        Verification of entries.
+        The loop at the end of the check makes it possible to interrupt the cycle more quickly if a command
+        control output is received (onCommand). The input scanning frequency is configurable
+        in the plugin options.
         """
-        Debug("KinconyCheckInputs - Lancement du thread")
+        Debug("KinconyCheckInputs - Thread launch")
         self.frequence_check = int(Parameters["Mode5"])
-        Debug("Fréquence de raffraichissement : " + str(int(self.frequence_check) * 50) + " ms + temps de cycle d'environ 100 ms")
+        Debug ("Frequency refresh rate:" + str (int (self.frequence_check) * 50) + "ms + cycle time of about 100 ms")
         while not self.stop_thread:
             self.UpdateDomoticz(True, False)
             for i in range(0,self.frequence_check):
                 time.sleep(0.05)
                 if self.stop_thread:
                     break
-        Debug("KinconyCheckInputs - Arrêt du thread")
+        Debug("KinconyCheckInputs - thread stop")
 
 
     def KinconyConnexion(self):
-        # Connexion avec la carte
+        # Connection with card
         self.connexion_TCP = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         self.connexion_TCP.settimeout(2)
 
         try:
             self.connexion_TCP.connect((self.host,self.port))
         except socket.timeout:
-            Domoticz.Error("KinconyConnexion - Erreur de communication")
+            Domoticz.Error ("KinconyConnexion - Communication error")
             self.connexion_TCP.close()
             return False
         except Exception as err:
-            Domoticz.Error("KinconyConnexion - Erreur :" + str(err))
+            Domoticz.Error("KinconyConnexion - Error :" + str(err))
             self.connexion_TCP.close()
             return False
-        Debug("KinconyConnexion - Tentative de connexion avec la carte Kincony IP:" + self.host)
+        Debug ("KinconyConnexion - Attempt to connect with the Kincony IP card:" + self.host)
         msg_recu = self.KinconyScan()
         if ("RELAY-SCAN_DEVICE-CHANNEL_" in msg_recu) and (",OK" in msg_recu):
-            Debug("onStart - Esclave présent, tentative de communication")
+            Debug ("onStart - Slave present, communication attempt")
             msg_recu = self.KinconyTest()
             if ("OK" in msg_recu):
-                Domoticz.Status("KinconyConnexion - Communication OK avec la carte Kincony IP:" + self.host)
+                Domoticz.Status ("KinconyConnexion - Communication OK with the Kincony IP card:" + self.host)
                 return True
             else:
-                Domoticz.Error("KinconyConnexion - Erreur de communication: '" + msg_recu + "'")
+                Domoticz.Error("KinconyConnexion - Communication error: '" + msg_recu + "'")
                 return False
         else:
-            Domoticz.Error("KinconyConnexion - Erreur de communication: '" + msg_recu + "'")
+            Domoticz.Error("KinconyConnexion - Communication error: '" + msg_recu + "'")
             return False
 
 
